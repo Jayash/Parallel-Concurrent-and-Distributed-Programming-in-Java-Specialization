@@ -49,6 +49,7 @@ FJ tasks are executed in a ForkJoinPool, which is a pool of Java threads. This p
 
 ## Computation Graphs, Work, Span, Ideal Parallelism
 
+![image](https://user-images.githubusercontent.com/7610065/92024539-f2e3d800-ed7b-11ea-9e25-869e8634e10e.png)
 - Computation Graphs (CGs)
   - A set of vertices or nodes, in which each node represents a step consisting of an arbitrary sequential computation. 
   - A set of directed edges that represent ordering constraints among steps.
@@ -62,6 +63,6 @@ CGs can be used to define data races, an important class of bugs in parallel pro
 
 CGs can also be used to reason about the ideal    parallelism of a parallel program as follows:
 - Define WORK(G) to be the sum of the execution times of all nodes in CG G, 
-- Define SPAN(G) to be the length of a longest path in G, when adding up the execution times of all nodes in the path. The longest paths are known as critical paths, so SPANalso represents the critical path length (CPL) of G.
+- Define SPAN(G) to be the length of a longest path in G, when adding up the execution times of all nodes in the path. The longest paths are known as critical paths, so SPANalso represents the **critical path length** (CPL) of G.
 
-> we define the ideal parallelism of Computation Graph G as the ratio, WORK(G)/SPAN(G). The ideal parallelism is an upper limit on the speedup factor that can be obtained from parallel execution of nodes in computation graph G
+> we define the ideal parallelism of Computation Graph G as the ratio, **WORK(G)/SPAN(G)**. The ideal parallelism is an upper limit on the speedup factor that can be obtained from parallel execution of nodes in computation graph G
