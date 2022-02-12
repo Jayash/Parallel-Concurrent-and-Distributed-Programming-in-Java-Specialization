@@ -9,8 +9,8 @@ Task Parallelism
 - Assess sequetional bottlenecks using Amdahl's Law
 
 ## Task Creation and Termination (Async, Finish)
-Async notation for task creation: “async ⟨stmt1⟩”, causes the parent task (i.e., the task executing the async statement) to create a new child task to execute the body of the async, ⟨stmt1⟩, asynchronously (i.e., before, after, or in parallel) with the remainder of the parent task. 
-Finish notation for task termination: “finish ⟨stmt2⟩” causes the parent task to execute ⟨stmt2⟩, and then wait until ⟨stmt2⟩ and all async tasks created within ⟨stmt2⟩ have completed. Async and finish constructs may be arbitrarily nested.
+We can use Async notation for task creation: “async ⟨stmt1⟩”, causes the parent task (i.e., the task executing the async statement) to create a new child task to execute the body of the async, ⟨stmt1⟩, asynchronously (i.e., before, after, or in parallel) with the remainder of the parent task. 
+We can use Finish notation for task termination: “finish ⟨stmt2⟩” causes the parent task to execute ⟨stmt2⟩, and then wait until ⟨stmt2⟩ and all async tasks created within ⟨stmt2⟩ have completed. Async and finish constructs may be arbitrarily nested.
 
 The array-sum example:
 ```
@@ -22,3 +22,4 @@ S3; // combine the two partial sums after both S1 and S2 have finished
 ```
 
 ## Creating Tasks in Java's Fork/Join Framework
+we can also use async and finish functionality using Java’s standard Fork/Join (FJ) framework. In this framework, a task can be specified in the {\tt compute()}compute() method of a user-defined class that extends the standard **RecursiveAction** class in the FJ framework.
