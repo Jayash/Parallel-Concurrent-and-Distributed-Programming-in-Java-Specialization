@@ -66,3 +66,9 @@ CGs can also be used to reason about the ideal    parallelism of a parallel prog
 - Define SPAN(G) to be the length of a longest path in G, when adding up the execution times of all nodes in the path. The longest paths are known as critical paths, so SPANalso represents the **critical path length** (CPL) of G.
 
 > we define the ideal parallelism of Computation Graph G as the ratio, **WORK(G)/SPAN(G)**. The ideal parallelism is an upper limit on the speedup factor that can be obtained from parallel execution of nodes in computation graph G
+
+## Amdahl's Law
+
+if q ≤ 1 is the fraction of WORK in a parallel program that must be executed sequentially, then the best speedup that can be obtained for that program for any number of processors, P , is Speedup(P)≤ 1/q.
+
+Amdahl’s Law reminds us to watch out for sequential bottlenecks both when designing parallel algorithms and when implementing programs on real machines.  As an example, if q = 10%, then Amdahl's Law reminds us that the best possible speedup must be ≤ 10 (which equals 1/q ), regardless of the number of processors available.
