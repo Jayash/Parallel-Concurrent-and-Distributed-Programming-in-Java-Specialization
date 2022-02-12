@@ -103,3 +103,42 @@ forall ( i: [0:tasks-1]) {
   }
 }
 ```
+
+## Pipeline Parallelism
+
+point-to-point synchronization can be used to build a one-dimensional pipeline with p tasks (stages), T_0, . . . , T_{p−1} p−1. For example, three important stages in a medical imaging pipeline are denoising, registration, and segmentation.
+
+We performed a simplified analysis of the WORK and SPAN for pipeline parallelism as follows. Let n be the number of input items and p the number of stages in the pipeline, WORK = n × p is the total work that must be done for all data items, and CPL = n + p −1 is the spanor critical path length for the pipeline. Thus, the ideal parallelism is PAR= WORK /CPL = np / (n + p − 1). This formula can be validated by considering a few boundary cases.  When p = 1, the ideal parallelism degenerates to PAR = 1, which confirms that   the computation is sequential when only one stage is available. Likewise, when n = 1, the ideal parallelism again degenerates to PAR = 1, which confirms that the computation is sequential when only one data item is available.  When n is much larger than p (n » p), then the ideal parallelism approaches PAR = p in  the limit, which is the best possible   case.
+
+The synchronization required for pipeline parallelism can be implemented using phasers by  allocating an   array of phasers, such that phaser {\tt ph[i]}ph[i] is “signalled” in iteration i by a call to {\tt ph[i].arrive()}ph[i].arrive() as follows:
+
+```
+// Code for pipeline stage i
+while ( there is an input to be processed ) {
+  // wait for previous stage, if any 
+  if (i > 0) ph[i - 1].awaitAdvance(); 
+  
+  process input;
+  
+  // signal next stage
+  ph[i].arrive();
+}
+```
+
+## Data Flow Parallelism
+ 
+ data flow parallelism model, which is to specify parallel programs as
+computation graphs. The simple data flow graph studied in the lecture consisted
+of five nodes and four edges: A → C, A → D, B → D, B → E. While futures
+can be used to generate such a computation graph, e.g., by including calls to A.get() and B.get() in task D, the computation
+graph edges are implicit in the get() calls when using futures.  Instead, we introduced  the asyncAwait notation to specify a task along with an explicit set of preconditions (events that the task must wait for before it can start execution). With this approach, the program can be generated directly from the computation graph as  follows:
+
+```
+async( () -> {/* Task A */; A.put(); } ); // Complete task and trigger event A
+async( () -> {/* Task B */; B.put(); } ); // Complete task and trigger event B
+asyncAwait(A, () -> {/* Task C */} );	    // Only execute task after event A is triggered 
+asyncAwait(A, B, () -> {/* Task D */} );	  // Only execute task after events A, B are triggered 
+asyncAwait(B, () -> {/* Task E */} );	    // Only execute task after event B is triggered
+```
+
+We observed that the power and elegance of data flow parallel programming is accompanied by the possibility of a lack of progress that can be viewed as a form of “deadlock” if the program omits a put() call for signalling an event.
