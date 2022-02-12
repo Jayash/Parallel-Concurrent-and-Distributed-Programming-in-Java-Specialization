@@ -49,7 +49,7 @@ FJ tasks are executed in a ForkJoinPool, which is a pool of Java threads. This p
 
 ## Computation Graphs, Work, Span, Ideal Parallelism
 
-![image](https://user-images.githubusercontent.com/7610065/92024539-f2e3d800-ed7b-11ea-9e25-869e8634e10e.png)
+![image](https://user-images.githubusercontent.com/7610065/153711214-8ba8909f-e930-43af-b410-effb34fbe461.png)
 - Computation Graphs (CGs)
   - A set of vertices or nodes, in which each node represents a step consisting of an arbitrary sequential computation. 
   - A set of directed edges that represent ordering constraints among steps.
