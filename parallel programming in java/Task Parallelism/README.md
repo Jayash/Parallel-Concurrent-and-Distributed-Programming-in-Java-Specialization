@@ -26,7 +26,7 @@ we can also use async and finish functionality using Java’s standard Fork/Join
 The method L.fork(), creates a new task that executes L’s compute() method.
 The call to L.join() then waits until the computation created by L.fork() has completed
 
-Note that join() is a lower-level primitive than finish because {\tt join()}join() waits for a specific task, whereas finish implicitly waits for all tasks created in its scope. To implement the finish construct using join() operations, you have to be sure to call join() on every task created in the finish scope.
+>Note that join() is a lower-level primitive than finish because {\tt join()}join() waits for a specific task, whereas finish implicitly waits for all tasks created in its scope. To implement the finish construct using join() operations, you have to be sure to call join() on every task created in the finish scope.
 
 ```
 private static class ASum extends RecursiveAction {
