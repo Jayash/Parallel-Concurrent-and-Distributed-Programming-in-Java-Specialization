@@ -13,7 +13,9 @@ Loop Parallelism
 The most general way is to think of each iteration of a parallel loop as an async task, with a finish construct encompassing all iterations. This approach can support general cases such as parallelization of the following pointer-chasing while loop:
 ```
 finish {
-for (p = head; p != null ; p = p.next) async compute(p);
+for (p = head; p != null ; p = p.next) {
+    async compute(p);
+  }
 }
 ```
 
