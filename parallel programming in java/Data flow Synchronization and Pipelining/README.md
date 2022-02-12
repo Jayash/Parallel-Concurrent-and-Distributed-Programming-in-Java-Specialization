@@ -18,7 +18,7 @@ forall (i : [0:n-1]) {
 }
 ```
 
-The operation **ph.arriveAndAwaitAdvance()**, can be used to implement a barrier through phaser object ph. There are two  possible positions for inserting a barrier between the two print statements above — before or after the call to lookup(i). However, upon closer examination, we can see that the call to  lookup(i) is local to iteration i and that there is no specific need to either complete it before the barrier or to complete it after the barrier.  In fact, the call to lookup(i) can be performed in parallel with the barrier. To facilitate this split-phase barrier (also known as a fuzzy barrier) we use two separate APIs from Java Phaser class —  ***ph.arrive()** and **ph.awaitAdvance()**. Together these two APIs form a barrier, but we now have the freedom to insert a computation such as lookup(i) between the two calls as follows:
+The operation **ph.arriveAndAwaitAdvance()**, can be used to implement a barrier through phaser object ph. There are two  possible positions for inserting a barrier between the two print statements above — before or after the call to lookup(i). However, upon closer examination, we can see that the call to  lookup(i) is local to iteration i and that there is no specific need to either complete it before the barrier or to complete it after the barrier.  In fact, the call to lookup(i) can be performed in parallel with the barrier. To facilitate this split-phase barrier (also known as a fuzzy barrier) we use two separate APIs from Java Phaser class —  **ph.arrive()** and **ph.awaitAdvance()**. Together these two APIs form a barrier, but we now have the freedom to insert a computation such as lookup(i) between the two calls as follows:
 
 ```
 // initialize phaser ph	for use by n tasks ("parties") 
@@ -108,9 +108,9 @@ forall ( i: [0:tasks-1]) {
 
 point-to-point synchronization can be used to build a one-dimensional pipeline with p tasks (stages), T_0, . . . , T_{p−1} p−1. For example, three important stages in a medical imaging pipeline are denoising, registration, and segmentation.
 
-We performed a simplified analysis of the WORK and SPAN for pipeline parallelism as follows. Let n be the number of input items and p the number of stages in the pipeline, WORK = n × p is the total work that must be done for all data items, and CPL = n + p −1 is the spanor critical path length for the pipeline. Thus, the ideal parallelism is PAR= WORK /CPL = np / (n + p − 1). This formula can be validated by considering a few boundary cases.  When p = 1, the ideal parallelism degenerates to PAR = 1, which confirms that   the computation is sequential when only one stage is available. Likewise, when n = 1, the ideal parallelism again degenerates to PAR = 1, which confirms that the computation is sequential when only one data item is available.  When n is much larger than p (n » p), then the ideal parallelism approaches PAR = p in  the limit, which is the best possible   case.
+We performed a simplified analysis of the WORK and SPAN for pipeline parallelism as follows. Let n be the number of input items and p the number of stages in the pipeline, **WORK = n × p** is the total work that must be done for all data items, and **CPL = n + p −1** is the spanor critical path length for the pipeline. Thus, the ideal parallelism is **PAR= WORK /CPL = np / (n + p − 1)**. This formula can be validated by considering a few boundary cases.  When p = 1, the ideal parallelism degenerates to PAR = 1, which confirms that   the computation is sequential when only one stage is available. Likewise, when n = 1, the ideal parallelism again degenerates to PAR = 1, which confirms that the computation is sequential when only one data item is available.  When n is much larger than p (n » p), then the ideal parallelism approaches PAR = p in  the limit, which is the best possible case.
 
-The synchronization required for pipeline parallelism can be implemented using phasers by  allocating an   array of phasers, such that phaser {\tt ph[i]}ph[i] is “signalled” in iteration i by a call to {\tt ph[i].arrive()}ph[i].arrive() as follows:
+The synchronization required for pipeline parallelism can be implemented using phasers by allocating an array of phasers, such that phaser ph[i] is “signalled” in iteration i by a call to ph[i].arrive() as follows:
 
 ```
 // Code for pipeline stage i
@@ -127,11 +127,8 @@ while ( there is an input to be processed ) {
 
 ## Data Flow Parallelism
  
- data flow parallelism model, which is to specify parallel programs as
-computation graphs. The simple data flow graph studied in the lecture consisted
-of five nodes and four edges: A → C, A → D, B → D, B → E. While futures
-can be used to generate such a computation graph, e.g., by including calls to A.get() and B.get() in task D, the computation
-graph edges are implicit in the get() calls when using futures.  Instead, we introduced  the asyncAwait notation to specify a task along with an explicit set of preconditions (events that the task must wait for before it can start execution). With this approach, the program can be generated directly from the computation graph as  follows:
+Data flow parallelism model, which is to specify parallel programs as computation graphs. The simple data flow graph studied in the lecture consisted
+of five nodes and four edges: A → C, A → D, B → D, B → E. While futures can be used to generate such a computation graph, e.g., by including calls to A.get() and B.get() in task D, the computation graph edges are implicit in the get() calls when using futures. Instead, we introduced the asyncAwait notation to specify a task along with an explicit set of preconditions (events that the task must wait for before it can start execution). With this approach, the program can be generated directly from the computation graph as  follows:
 
 ```
 async( () -> {/* Task A */; A.put(); } ); // Complete task and trigger event A
