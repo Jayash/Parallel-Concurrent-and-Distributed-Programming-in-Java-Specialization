@@ -45,4 +45,8 @@ An important benefit of using Java  streams when possible is that the  pipeline 
 
  The relationship between determinism and data races in parallel programs
  
- - A parallel program is said to be **functionally deterministic** if it always computes the same answer when given the same input, and **structurally deterministic** if it always computes the same computation graph, when given the same input. 
+ - A parallel program is said to be **functionally deterministic** if it always computes the same answer when given the same input, and **structurally deterministic** if it always computes the same computation graph, when given the same input.
+
+The presence of data races often leads to functional and/or structural nondeterminism because a parallel program with data races may exhibit different behaviors for the same input, depending on the relative scheduling and timing of memory accesses involved in a data race. In general, the absence of data races is not sufficient to guarantee determinism.
+
+> Furthermore, there may be cases of “benign” nondeterminism for programs with data races in which different executions with the same input may generate different outputs, but all the outputs may be acceptable in the context of the application, e.g., different locations for a search pattern in a target string.
