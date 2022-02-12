@@ -22,4 +22,24 @@ S3; // combine the two partial sums after both S1 and S2 have finished
 ```
 
 ## Creating Tasks in Java's Fork/Join Framework
-we can also use async and finish functionality using Java’s standard Fork/Join (FJ) framework. In this framework, a task can be specified in the {\tt compute()}compute() method of a user-defined class that extends the standard **RecursiveAction** class in the FJ framework.
+we can also use async and finish functionality using Java’s standard Fork/Join (FJ) framework. In this framework, a task can be specified in the compute() method of a user-defined class that extends the standard **RecursiveAction** class e.g. (L) in the FJ framework.
+The method L.fork(), creates a new task that executes L’s compute() method.
+The call to L.join() then waits until the computation created by L.fork() has completed
+
+Note that join() is a lower-level primitive than finish because {\tt join()}join() waits for a specific task, whereas finish implicitly waits for all tasks created in its scope. To implement the finish construct using join() operations, you have to be sure to call join() on every task created in the finish scope.
+
+```
+private static class ASum extends RecursiveAction {
+  int[] A; // input array
+  int LO, HI; // subrange
+  int SUM; // return value
+  . . .
+  @Override
+  protected void compute() {
+    SUM = 0;
+    for (int i = LO; i <= HI; i++) SUM += A[i];
+  } // compute()
+}
+```
+
+FJ tasks are executed in a ForkJoinPool, which is a pool of Java threads. This pool supports the invokeAll() method that combines both the fork and join operations by executing a set of tasks in parallel, and waiting for their completion. For example, {\tt ForkJoinTask.invokeAll(left, right)}ForkJoinTask.invokeAll(left,right) implicitly performs fork() operations on left and right, followed by join() operations on both objects.
