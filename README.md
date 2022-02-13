@@ -18,7 +18,7 @@ Parallelism is when multiple tasks OR several parts of a unique task literally r
 
 ## Concurrent Programming in Java
 
-[Concurrent Programming](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/new/main)
+[Concurrent Programming](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/Concurrent%20Programming%20in%20Java)
 
 Concurrency means multiple tasks which start, run, and complete in overlapping time periods, in no specific order. Concurrency is essentially applicable when we talk about a minimum of two tasks or more. When an application is capable of executing two tasks virtually at the same time, we call it a concurrent application.
 
