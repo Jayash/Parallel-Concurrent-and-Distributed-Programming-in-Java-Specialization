@@ -1,7 +1,9 @@
 # Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization
 Parallel, Concurrent, and Distributed Programming in Java Specialization
 
-## Parallel programming in java
+## Parallel Programming in Java
+
+[Parallel Programming](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/parallel%20programming%20in%20java)
 
 Parallelism is when multiple tasks OR several parts of a unique task literally run at the same time, e.g. on a multi-core processor. Parallelism does not require two tasks to exist. It literally physically run parts of tasks OR multiple tasks, at the same time using the multi-core infrastructure of CPU, by assigning one core to each task or sub-task.
 
@@ -14,7 +16,9 @@ Parallelism is when multiple tasks OR several parts of a unique task literally r
 - [Loop Parallelism](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/parallel%20programming%20in%20java/Loop%20Parallelism)
 - [Data flow Synchronization and Pipelining](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/parallel%20programming%20in%20java/Data%20flow%20Synchronization%20and%20Pipelining)
 
-## Concurrent programming in java
+## Concurrent Programming in Java
+
+[Concurrent Programming](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/new/main)
 
 Concurrency means multiple tasks which start, run, and complete in overlapping time periods, in no specific order. Concurrency is essentially applicable when we talk about a minimum of two tasks or more. When an application is capable of executing two tasks virtually at the same time, we call it a concurrent application.
 
