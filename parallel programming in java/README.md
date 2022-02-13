@@ -6,3 +6,8 @@ Parallelism is when multiple tasks OR several parts of a unique task literally r
 > In a single-core CPU, we may get concurrency but NOT parallelism.
 
 ![image](https://user-images.githubusercontent.com/7610065/153738608-aa5c6f7a-78a9-45d0-b385-77937267011f.png)
+
+## Tools to enable Parallelism
+
+![image](https://user-images.githubusercontent.com/7610065/153738743-5de4474b-bee2-46c6-b249-265d5e048e0f.png)
+
