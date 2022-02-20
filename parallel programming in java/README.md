@@ -1,6 +1,8 @@
 # Parallel programming in java
 Parallel programming in java
 
+[Solutions for Parallel Programming in Java](https://github.com/fyang623/Parallel-Concurrent-and-Distributed-Programming-in-Java/tree/master/Parallel%20Programming%20in%20Java)
+
 Parallelism is when multiple tasks OR several parts of a unique task literally run at the same time, e.g. on a multi-core processor. Parallelism does not require two tasks to exist. It literally physically run parts of tasks OR multiple tasks, at the same time using the multi-core infrastructure of CPU, by assigning one core to each task or sub-task.
 
 > In a single-core CPU, we may get concurrency but NOT parallelism.
