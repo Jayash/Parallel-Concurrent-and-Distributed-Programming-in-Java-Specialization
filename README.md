@@ -24,6 +24,8 @@ Concurrency means multiple tasks which start, run, and complete in overlapping t
 
 ![image](https://user-images.githubusercontent.com/7610065/153738603-58918ed6-ba32-4cfe-99f3-cdc2bc1d0e53.png)
 
+- [Threads and Locks](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/Concurrent%20Programming%20in%20Java/Threads%20and%20Locks)
+- [Critical Sections and Isolation](https://github.com/Jayash/Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization/tree/main/Concurrent%20Programming%20in%20Java/Critical%20Sections%20and%20Isolation)
 
 ## Parallel Concurrent executions and Parallelism
 
