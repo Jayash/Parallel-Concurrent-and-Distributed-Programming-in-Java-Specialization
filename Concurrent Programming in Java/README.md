@@ -8,5 +8,5 @@ Concurrency means multiple tasks which start, run, and complete in overlapping t
 ![image](https://user-images.githubusercontent.com/7610065/153738603-58918ed6-ba32-4cfe-99f3-cdc2bc1d0e53.png)
 
 ## Tools to enable Concurrency
-
+- locks, isolated, actors, optimistic concurrency
 ![image](https://user-images.githubusercontent.com/7610065/153739354-88429031-e9fd-416c-91ad-56a860213426.png)
