@@ -1,5 +1,5 @@
-# Parallel-Concurrent-and-Distributed-Programming-in-Java-Specialization
-Parallel, Concurrent, and Distributed Programming in Java Specialization
+# Parallel-and-Concurrent-Programming-in-Java-Specialization
+Parallel, and Concurrent in Java Specialization
 
 ## Parallel Programming in Java
 
